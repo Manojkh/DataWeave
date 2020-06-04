@@ -1,0 +1,16 @@
+%dw 2.0
+output application/json
+var DateTimeVar = "2020-02-29T00:00:00"
+var Number1 = now() as Number
+var onlyDate = "2020-02-29"
+var datewithMonth = "22-May-2020"
+fun DateTimeToEpoch(param1) = (((param1 as DateTime ) ) as Number)  
+---
+{
+        
+        DateToEpoch:(((DateTimeVar as DateTime ) ) as Number)   ,
+        funDateToEpoch: DateTimeToEpoch('2020-02-29T00:00:00') as DateTime,
+        EpochToDate:  (now() as Number)  ,
+        'EpochToDate-case1':((( onlyDate as Date) ++ |00:00:00| ++  |+00:00|) as Number as DateTime),
+        p: (datewithMonth as Date {format:"dd-MMM-yyyy"}) as Date {format:"dd-MM-yyyy"}
+}
